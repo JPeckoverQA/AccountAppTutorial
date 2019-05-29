@@ -7,6 +7,10 @@ public class AccountRepositoryMap {
 	//create HashMap
 	public HashMap<Integer, Account> map = new HashMap<Integer, Account>();
 	
+	
+	//add and retrieve should really be in a separate class Account Repository
+	
+	
 	public void add(Account account) {
 		
 		map.put(account.getId(), account);
