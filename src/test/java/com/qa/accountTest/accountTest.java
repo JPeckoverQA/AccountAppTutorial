@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.qa.app.Account;
+import com.qa.app.AccountRepositoryDB;
 import com.qa.app.AccountRepositoryMap;
 
 public class accountTest {
@@ -122,6 +123,46 @@ public class accountTest {
 		assertEquals("Wrong account retrieved", a, retrieved);
 	}
 	
+	@Test
+	public void accountRepositoryDBTest() {
+
+		Account a = new Account();
+		AccountRepositoryDB db = new AccountRepositoryDB();
+		//jba creates the id so cannot be set here
+		
+		db.add(a);
+		int id = a.getId();
+		db.retrieve(id);
+		
+		Account accountBack = db.retrieve(id);
+
+		assertEquals("Wrong account retrieved", a, accountBack);
+	}
+	
+	//test to check if we can update firstName
+	@Test
+	public void DBupdate() {
+		Account account = new Account();
+		AccountRepositoryDB db = new AccountRepositoryDB();
+		account.setFirstName("Adrian");
+		db.add(account);
+		int id = account.getId();
+		db.updateFirstName(id, "Danny");
+		String firstName = account.getFirstName();
+		
+		assertEquals("wrong name updated", "Danny", firstName);
+	}
+	
+	//test to check if we can delete from db
+	@Test
+	public void DBremove() {
+		Account account = new Account();
+		AccountRepositoryDB db = new AccountRepositoryDB();
+		int id = account.getId();
+		db.remove(id);
+		
+		assertNull
+	}
 
 
 

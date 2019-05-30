@@ -10,6 +10,9 @@ public interface AccountRepository {
 	public Account retrieve(Integer id); 
 		
 		
+	Account updateFirstName(int id, String newFirstName);
+		
+	void remove(int id);
 
 
 }
